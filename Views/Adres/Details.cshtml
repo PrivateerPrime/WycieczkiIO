@@ -1,0 +1,49 @@
+@model WycieczkiIO.Models.Adres
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Adres</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ulica)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ulica)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Numer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Numer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KodPocztowy)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KodPocztowy)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Miasto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Miasto.NazwaMiasta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kraj)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kraj.NazwaKraju)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.AdresId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
