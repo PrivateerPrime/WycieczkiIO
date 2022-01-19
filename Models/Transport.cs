@@ -11,11 +11,9 @@ namespace WycieczkiIO.Models
         
         [Required]
         public int AdresPoczatekId { get; set; }
-        [Required]
         public Adres AdresPoczatek { get; set; }
         [Required]
         public int AdresKoniecId { get; set; }
-        [Required]
         public Adres AdresKoniec { get; set; }
         [Required]
         public Rodzaj RodzajTransportu { get; set; }

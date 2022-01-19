@@ -20,7 +20,6 @@ namespace WycieczkiIO.Models
         public string Email { get; set; }
         [Required]
         public int WycieczkiId { get; set; }
-        [Required]
         public Wycieczka Wycieczka { get; set; }
     }
 }
