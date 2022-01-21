@@ -1,0 +1,48 @@
+@model IEnumerable<WycieczkiIO.Models.Transport>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AdresPoczatek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdresKoniec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RodzajTransportu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdresPoczatek.KodPocztowy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdresKoniec.KodPocztowy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RodzajTransportu)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TransportId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TransportId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TransportId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

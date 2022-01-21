@@ -1,0 +1,62 @@
+@model WycieczkiIO.Models.Wycieczka
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Wycieczka</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DataRozpoczecia" class="control-label">Data Rozpoczęcia</label>
+                <input asp-for="DataRozpoczecia" class="form-control" />
+                <span asp-validation-for="DataRozpoczecia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataZakonczenia" class="control-label">Data Zakończenia</label>
+                <input asp-for="DataZakonczenia" class="form-control" />
+                <span asp-validation-for="DataZakonczenia" class="text-danger"></span>
+            </div>
+            @* <div class="form-group"> *@
+            @*     <label asp-for="DataPlatnosci" class="control-label"></label> *@
+            @*     <input asp-for="DataPlatnosci" class="form-control" /> *@
+            @*     <span asp-validation-for="DataPlatnosci" class="text-danger"></span> *@
+            @* </div> *@
+            @* <div class="form-group"> *@
+            @*     <label asp-for="Status" class="control-label"></label> *@
+            @*     <select asp-for="Status" class="form-control"></select> *@
+            @*     <span asp-validation-for="Status" class="text-danger"></span> *@
+            @* </div> *@
+            <div class="form-group">
+                <label asp-for="MiejsceDocelowe" class="control-label">Miejsce docelowe</label>
+                <input asp-for="MiejsceDocelowe" class="form-control" />
+                <span asp-validation-for="MiejsceDocelowe" class="text-danger"></span>
+            </div>
+            @* <div class="form-group"> *@
+            @*     <label asp-for="PlatnoscId" class="control-label"></label> *@
+            @*     <select asp-for="PlatnoscId" class ="form-control" asp-items="ViewBag.PlatnoscId"></select> *@
+            @* </div> *@
+            @* <div class="form-group"> *@
+            @*     <label asp-for="ZakwaterowanieId" class="control-label"></label> *@
+            @*     <select asp-for="ZakwaterowanieId" class ="form-control" asp-items="ViewBag.ZakwaterowanieId"></select> *@
+            @* </div> *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

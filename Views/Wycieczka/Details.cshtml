@@ -1,0 +1,79 @@
+@model WycieczkiIO.Models.Wycieczka
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Wycieczka</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MiejsceDocelowe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MiejsceDocelowe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataRozpoczecia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataRozpoczecia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataZakonczenia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataZakonczenia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Raw("Kwota")
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewData["Kwota"]
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Raw("Rabat")
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewData["Rabat"]
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Raw("Status platnosci")
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewData["StatusPlatnosci"]
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Raw("Uczestnicy")
+        </dt>
+        <dd class = "col-sm-10">
+           @{
+               var uczestnicy = ViewData["Uczestnicy"] as List<Uczestnik>;
+               foreach (var elem in uczestnicy)
+               {
+                   <p>@Html.Raw("Imię: " + elem.Imie)</p>
+                   <p>@Html.Raw("Nazwisko: " + elem.Nazwisko)</p>
+                   <p>@Html.Raw("Pesel: " + elem.Pesel)</p>
+                   <p>@Html.Raw("Telefon: " + elem.Telefon)</p>
+                   <p>@Html.Raw("Email: " + elem.Email)</p>
+               }
+           }
+        </dd>   
+        <dt class = "col-sm-2">
+            @Html.Raw("Nazwa zakwaterowania")
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewData["ZakwaterowanieNazwa"]
+        </dd>
+        
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.WycieczkaId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

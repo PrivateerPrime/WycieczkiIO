@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WycieczkiIO.Models
@@ -12,6 +13,8 @@ namespace WycieczkiIO.Models
         [Required]
         public int PrzewodnikId { get; set; }
         public Przewodnik Przewodnik { get; set; }
+        
+        public ICollection<Wycieczka> Wycieczka { get; set; }
         
         public ICollection<WycieczkaAtrakcja> WycieczkaAtrakcja { get; set; }
     }

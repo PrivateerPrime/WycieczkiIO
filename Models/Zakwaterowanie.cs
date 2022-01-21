@@ -11,7 +11,6 @@ namespace WycieczkiIO.Models
         public int ZakwaterowanieId { get; set; }
         [Required]
         public int AdresId { get; set; }
-        [Required]
         public Adres Adres { get; set; }
         [Required]
         [MaxLength(60)]

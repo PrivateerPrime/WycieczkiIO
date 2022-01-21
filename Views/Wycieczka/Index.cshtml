@@ -1,0 +1,53 @@
+@model IEnumerable<WycieczkiIO.Models.Wycieczka>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Raw("Miejsce docelowe")
+            </th>
+            <th>
+                @Html.Raw("Data rozpoczęcia")
+            </th>
+            <th>
+                @Html.Raw("Data zakończenia")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiejsceDocelowe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRozpoczecia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataZakonczenia)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.WycieczkaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.WycieczkaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.WycieczkaId">Delete</a> |
+                <a asp-action="AddPerson" asp-route-id="@item.WycieczkaId">Dodaj uczestnika</a> |
+                <a asp-action="DeletePerson" asp-route-id="@item.WycieczkaId">Usuń uczestnika</a> |
+                <a asp-action="AddAccommodation" asp-route-id="@item.WycieczkaId">Dodaj/Edytuj zakwaterowanie</a> |
+                <a asp-action="DeleteAccommodation" asp-route-id="@item.WycieczkaId">Usuń zakwaterowanie</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

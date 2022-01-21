@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WycieczkiIO.Models
@@ -18,6 +19,8 @@ namespace WycieczkiIO.Models
         [Required]
         public Rodzaj RodzajTransportu { get; set; }
         
+        public ICollection<Wycieczka> Wycieczkas { get; set; }
+
         public ICollection<WycieczkaTransport> WycieczkaTransport { get; set; }
         
     }

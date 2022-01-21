@@ -55,8 +55,8 @@ namespace WycieczkiIO.Migrations
                     PrzewodnikId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Imie = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Nazwisko = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefon = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Nazwisko = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Telefon = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -192,6 +192,54 @@ namespace WycieczkiIO.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AtrakcjaWycieczka",
+                columns: table => new
+                {
+                    AtrakcjaId = table.Column<int>(type: "int", nullable: false),
+                    WycieczkaId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AtrakcjaWycieczka", x => new { x.AtrakcjaId, x.WycieczkaId });
+                    table.ForeignKey(
+                        name: "FK_AtrakcjaWycieczka_Atrakcja_AtrakcjaId",
+                        column: x => x.AtrakcjaId,
+                        principalTable: "Atrakcja",
+                        principalColumn: "AtrakcjaId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AtrakcjaWycieczka_Wycieczka_WycieczkaId",
+                        column: x => x.WycieczkaId,
+                        principalTable: "Wycieczka",
+                        principalColumn: "WycieczkaId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TransportWycieczka",
+                columns: table => new
+                {
+                    TransportId = table.Column<int>(type: "int", nullable: false),
+                    WycieczkasWycieczkaId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TransportWycieczka", x => new { x.TransportId, x.WycieczkasWycieczkaId });
+                    table.ForeignKey(
+                        name: "FK_TransportWycieczka_Transport_TransportId",
+                        column: x => x.TransportId,
+                        principalTable: "Transport",
+                        principalColumn: "TransportId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TransportWycieczka_Wycieczka_WycieczkasWycieczkaId",
+                        column: x => x.WycieczkasWycieczkaId,
+                        principalTable: "Wycieczka",
+                        principalColumn: "WycieczkaId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Uczestnik",
                 columns: table => new
                 {
@@ -203,7 +251,7 @@ namespace WycieczkiIO.Migrations
                     Telefon = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
                     WycieczkiId = table.Column<int>(type: "int", nullable: false),
-                    WycieczkaId = table.Column<int>(type: "int", nullable: false)
+                    WycieczkaId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -213,7 +261,7 @@ namespace WycieczkiIO.Migrations
                         column: x => x.WycieczkaId,
                         principalTable: "Wycieczka",
                         principalColumn: "WycieczkaId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -285,6 +333,11 @@ namespace WycieczkiIO.Migrations
                 column: "PrzewodnikId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AtrakcjaWycieczka_WycieczkaId",
+                table: "AtrakcjaWycieczka",
+                column: "WycieczkaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Transport_AdresKoniecId",
                 table: "Transport",
                 column: "AdresKoniecId");
@@ -293,6 +346,11 @@ namespace WycieczkiIO.Migrations
                 name: "IX_Transport_AdresPoczatekId",
                 table: "Transport",
                 column: "AdresPoczatekId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TransportWycieczka_WycieczkasWycieczkaId",
+                table: "TransportWycieczka",
+                column: "WycieczkasWycieczkaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Uczestnik_WycieczkaId",
@@ -327,6 +385,12 @@ namespace WycieczkiIO.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AtrakcjaWycieczka");
+
+            migrationBuilder.DropTable(
+                name: "TransportWycieczka");
+
             migrationBuilder.DropTable(
                 name: "Uczestnik");
 

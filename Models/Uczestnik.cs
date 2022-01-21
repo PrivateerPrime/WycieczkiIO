@@ -19,7 +19,7 @@ namespace WycieczkiIO.Models
         [MaxLength(60)]
         public string Email { get; set; }
         [Required]
-        public int WycieczkiId { get; set; }
+        public int WycieczkaId { get; set; }
         public Wycieczka Wycieczka { get; set; }
     }
 }

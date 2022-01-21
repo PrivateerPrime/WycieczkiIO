@@ -1,0 +1,42 @@
+@model WycieczkiIO.Models.Transport
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Transport</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AdresPoczatekId" class="control-label">Adres początek</label>
+                <select asp-for="AdresPoczatekId" class ="form-control" asp-items="ViewBag.AdresPoczatek"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdresKoniecId" class="control-label">Adres koniec</label>
+                <select asp-for="AdresKoniecId" class ="form-control" asp-items="ViewBag.AdresKoniec"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="RodzajTransportu" class="control-label">Rodzaj transportu</label>
+                <select asp-for="RodzajTransportu" class="form-control"></select>
+                <span asp-validation-for="RodzajTransportu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

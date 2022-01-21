@@ -19,6 +19,36 @@ namespace WycieczkiIO.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("AtrakcjaWycieczka", b =>
+                {
+                    b.Property<int>("AtrakcjaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WycieczkaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AtrakcjaId", "WycieczkaId");
+
+                    b.HasIndex("WycieczkaId");
+
+                    b.ToTable("AtrakcjaWycieczka");
+                });
+
+            modelBuilder.Entity("TransportWycieczka", b =>
+                {
+                    b.Property<int>("TransportId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WycieczkasWycieczkaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TransportId", "WycieczkasWycieczkaId");
+
+                    b.HasIndex("WycieczkasWycieczkaId");
+
+                    b.ToTable("TransportWycieczka");
+                });
+
             modelBuilder.Entity("WycieczkiIO.Models.Adres", b =>
                 {
                     b.Property<int>("AdresId")
@@ -153,11 +183,13 @@ namespace WycieczkiIO.Migrations
 
                     b.Property<string>("Nazwisko")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Telefon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("PrzewodnikId");
 
@@ -219,7 +251,7 @@ namespace WycieczkiIO.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("WycieczkaId")
+                    b.Property<int?>("WycieczkaId")
                         .HasColumnType("int");
 
                     b.Property<int>("WycieczkiId")
@@ -326,6 +358,36 @@ namespace WycieczkiIO.Migrations
                     b.ToTable("Zakwaterowanie");
                 });
 
+            modelBuilder.Entity("AtrakcjaWycieczka", b =>
+                {
+                    b.HasOne("WycieczkiIO.Models.Atrakcja", null)
+                        .WithMany()
+                        .HasForeignKey("AtrakcjaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WycieczkiIO.Models.Wycieczka", null)
+                        .WithMany()
+                        .HasForeignKey("WycieczkaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TransportWycieczka", b =>
+                {
+                    b.HasOne("WycieczkiIO.Models.Transport", null)
+                        .WithMany()
+                        .HasForeignKey("TransportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WycieczkiIO.Models.Wycieczka", null)
+                        .WithMany()
+                        .HasForeignKey("WycieczkasWycieczkaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("WycieczkiIO.Models.Adres", b =>
                 {
                     b.HasOne("WycieczkiIO.Models.Kraj", "Kraj")
@@ -379,9 +441,7 @@ namespace WycieczkiIO.Migrations
                 {
                     b.HasOne("WycieczkiIO.Models.Wycieczka", "Wycieczka")
                         .WithMany("Uczestnicy")
-                        .HasForeignKey("WycieczkaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WycieczkaId");
 
                     b.Navigation("Wycieczka");
                 });

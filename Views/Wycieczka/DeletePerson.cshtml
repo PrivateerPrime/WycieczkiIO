@@ -1,0 +1,55 @@
+@model List<WycieczkiIO.Models.Uczestnik>
+
+@{
+    ViewData["Title"] = "Usuń uczestnika";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Imie);
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Nazwisko);
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Pesel);
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pesel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="DeletePersonConfirm" asp-route-id="@item.UczestnikId">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
