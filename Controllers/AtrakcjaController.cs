@@ -48,7 +48,7 @@ namespace WycieczkiIO.Controllers
         // GET: Atrakcja/Create
         public IActionResult Create()
         {
-            ViewData["PrzewodnikId"] = new SelectList(_context.Przewodnik, "PrzewodnikId", "Imie");
+            ViewData["PrzewodnikId"] = new SelectList(_context.Przewodnik, "PrzewodnikId", "Nazwisko");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace WycieczkiIO.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PrzewodnikId"] = new SelectList(_context.Przewodnik, "PrzewodnikId", "Imie", atrakcja.PrzewodnikId);
+            ViewData["PrzewodnikId"] = new SelectList(_context.Przewodnik, "PrzewodnikId", "Nazwisko", atrakcja.PrzewodnikId);
             return View(atrakcja);
         }
 
@@ -82,7 +82,7 @@ namespace WycieczkiIO.Controllers
             {
                 return NotFound();
             }
-            ViewData["PrzewodnikId"] = new SelectList(_context.Przewodnik, "PrzewodnikId", "Imie", atrakcja.PrzewodnikId);
+            ViewData["PrzewodnikId"] = new SelectList(_context.Przewodnik, "PrzewodnikId", "Nazwisko", atrakcja.PrzewodnikId);
             return View(atrakcja);
         }
 
@@ -118,7 +118,7 @@ namespace WycieczkiIO.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PrzewodnikId"] = new SelectList(_context.Przewodnik, "PrzewodnikId", "Imie", atrakcja.PrzewodnikId);
+            ViewData["PrzewodnikId"] = new SelectList(_context.Przewodnik, "PrzewodnikId", "Nazwisko", atrakcja.PrzewodnikId);
             return View(atrakcja);
         }
 

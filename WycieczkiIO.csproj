@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,10 +14,20 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+      <PackageReference Include="xunit" Version="2.4.1" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Migrations" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="TestProjectIO\bin\Debug\net5.0\TestProjectIO.deps.json" />
+      <_ContentIncludedByDefault Remove="TestProjectIO\bin\Debug\net5.0\TestProjectIO.runtimeconfig.dev.json" />
+      <_ContentIncludedByDefault Remove="TestProjectIO\bin\Debug\net5.0\TestProjectIO.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="TestProjectIO\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="TestProjectIO\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="TestProjectIO\obj\TestProjectIO.csproj.nuget.dgspec.json" />
     </ItemGroup>
 
 </Project>
