@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="RodzajTransportu" class="control-label">Rodzaj transportu</label>
-                <select asp-for="RodzajTransportu" class="form-control"></select>
+                <select asp-for="RodzajTransportu" asp-items="@Html.GetEnumSelectList<Rodzaj>()" class="form-control" ></select>
                 <span asp-validation-for="RodzajTransportu" class="text-danger"></span>
             </div>
             <div class="form-group">

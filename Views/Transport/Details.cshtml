@@ -12,19 +12,19 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AdresPoczatek)
+            @Html.Raw("Adres początek")
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AdresPoczatek.KodPocztowy)
+            @Html.DisplayFor(model => model.AdresPoczatek.Ulica)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AdresKoniec)
+            @Html.Raw("Adres koniec")
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AdresKoniec.KodPocztowy)
+            @Html.DisplayFor(model => model.AdresKoniec.Ulica)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RodzajTransportu)
+            @Html.Raw("Rodzaj transportu")
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.RodzajTransportu)

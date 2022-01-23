@@ -14,13 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.AdresPoczatek)
+                @Html.Raw("Adres początek")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AdresKoniec)
+                @Html.Raw("Adres koniec")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RodzajTransportu)
+                @Html.Raw("Rodzaj transportu")
             </th>
             <th></th>
         </tr>
@@ -29,10 +29,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.AdresPoczatek.KodPocztowy)
+                @Html.DisplayFor(modelItem => item.AdresPoczatek.Ulica)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AdresKoniec.KodPocztowy)
+                @Html.DisplayFor(modelItem => item.AdresKoniec.Ulica)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RodzajTransportu)
