@@ -37,7 +37,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Nazwisko)
             </td>
-            <td>
+            <td id="@item.Pesel">
                 @Html.DisplayFor(modelItem => item.Pesel)
             </td>
             <td>
@@ -47,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                <a asp-action="DeletePersonConfirm" asp-route-id="@item.UczestnikId">Usuń</a>
+                <a id="@item.Pesel" asp-action="DeletePersonConfirm" asp-route-id="@item.UczestnikId">Usuń</a>
             </td>
         </tr>
 }

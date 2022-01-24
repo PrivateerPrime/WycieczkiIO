@@ -71,7 +71,7 @@ namespace WycieczkiIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("WycieczkaId,DataRozpoczecia,DataZakonczenia,MiejsceDocelowe")] Wycieczka wycieczka)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && wycieczka.DataZakonczenia >= wycieczka.DataRozpoczecia)
             {
                 Platnosc platnosc = new Platnosc
                     {Kwota = 0, Rabat = 0, Status = Status.Niezaplacona};
