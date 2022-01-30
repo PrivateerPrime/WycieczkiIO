@@ -11,7 +11,7 @@ namespace WycieczkiIO.Models
         [MaxLength(30)]
         [Required]
         public string Nazwisko { get; set; }
-        [StringLength(11)]
+        [StringLength(11, MinimumLength = 11)]
         [Required]
         public string Pesel { get; set; }
         [MaxLength(30)]

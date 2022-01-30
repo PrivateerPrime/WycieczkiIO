@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.Reflection;
 
 namespace WycieczkiIO.Models
 {
     public enum StatusWycieczki { Aktywna, OczekiwanaZaplata, Anulowana}
     
-    public class Wycieczka
+    public class Wycieczka : IValidatableObject
     {
         public int WycieczkaId { get; set; }
         [Required]
@@ -42,5 +44,10 @@ namespace WycieczkiIO.Models
         public ICollection<Transport> Transport { get; set; }
         
         public ICollection<WycieczkaTransport> WycieczkaTransport { get; set; }
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (DataZakonczenia < DataRozpoczecia)
+                yield return new ValidationResult("Data zakończenia musi być później niż data rozpoczęcia");
+        }
     }
 }
